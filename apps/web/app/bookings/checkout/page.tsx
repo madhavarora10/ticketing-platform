@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ function useCountdown(seconds: number) {
   return { remaining, display: `${mins}:${secs}` };
 }
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const params = useSearchParams();
   const router = useRouter();
 
@@ -318,5 +318,13 @@ export default function CheckoutPage() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="container" style={{ padding: "2rem" }}>Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
