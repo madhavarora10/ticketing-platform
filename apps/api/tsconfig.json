@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2021",
+    "lib": ["ES2021"],
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@repo/types": ["../../packages/types/src/index.ts"],
+      "@repo/database": ["../../packages/database/src/index.ts"],
+      "@repo/pricing": ["../../packages/pricing/src/index.ts"]
+    }
+  },
+  "include": [
+    "src",
+    "../../packages/types/src",
+    "../../packages/database/src",
+    "../../packages/pricing/src"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
+
