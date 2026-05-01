@@ -24,8 +24,9 @@ pnpm install
 # 3. Start Postgres and Redis in the background
 docker compose up -d
 
-# 4. Copy the env file, run database migrations, and seed data
+# 4. Copy the env files, run database migrations, and seed data
 cp apps/api/.env.example apps/api/.env
+cp packages/database/.env.example packages/database/.env
 pnpm db:generate
 pnpm db:migrate
 pnpm db:seed
@@ -48,14 +49,16 @@ The app is now running at:
 ## Running the application
 
 
-pnpm dev          # starts both the Next.js frontend and the Express API together
-
+```bash
+pnpm dev                  # starts both the Next.js frontend and the Express API
+```
 
 Or run them individually:
 
-
-pnpm --filter api dev   # API only (port 4000)
-pnpm --filter web dev   # Frontend only (port 3000)
+```bash
+pnpm --filter api dev     # API only (port 4000)
+pnpm --filter web dev     # Frontend only (port 3000)
+```
 
 ## Running the tests
 
@@ -77,6 +80,12 @@ The integration tests cover:
 - Insufficient inventory rejection
 - Non-existent event handling
 - **Concurrency tests** — 2, 5, and 3-racer scenarios proving zero overbooking
+
+Run **all** test suites in one go:
+
+```bash
+pnpm test
+```
 
 ---
 
